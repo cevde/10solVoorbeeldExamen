@@ -16,7 +16,7 @@ namespace ThePlaceToMeet.Filters
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            context.ActionArguments["klant"] = _klantRepository.GetByEmail("peter@hogent.be");
+            context.ActionArguments["klant"] = context.HttpContext.User.Identity.IsAuthenticated? _klantRepository.GetByEmail(context.HttpContext.User.Identity.Name) : null;
             base.OnActionExecuting(context);
         }
     }
