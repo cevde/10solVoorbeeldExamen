@@ -24,7 +24,7 @@ namespace ThePlaceToMeet.Models.Domain
         public int GetAantalReservaties(int jaar)
         {
             //implementeer
-            return 0;
+            return Reservaties.Count(r => r.Dag.Year == jaar);
         }
 
         public void VoegReservatieToe(Reservatie reservatie)

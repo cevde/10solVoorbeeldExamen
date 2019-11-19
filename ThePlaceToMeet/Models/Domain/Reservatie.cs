@@ -19,7 +19,7 @@ namespace ThePlaceToMeet.Models.Domain
         {
             get
             {
-                return 0;
+                return PrijsPerUur * DuurInUren * (1 - (Korting != null ? (decimal)Korting.Percentage / 100 : 0)) + ((PrijsPerPersoonStandaardCatering + PrijsPerPersoonCatering) * AantalPersonen);
             }
         }
     }
