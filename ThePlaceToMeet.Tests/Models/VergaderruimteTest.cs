@@ -23,9 +23,10 @@ namespace ThePlaceToMeet.Tests.Models
             _klantZonderReservaties = _context.Piet;
         }
 
-        [Fact(Skip = "Not yet implemented")]
+        [Fact]
         public void Reserveer_DatumLigtNietInDeToekomst_WerptArgumentException()
         {
+            Assert.Throws<ArgumentException>(() => _vergaderruimte.Reserveer(_klantZonderReservaties, _context.Kortingen, DateTime.Today, 8, 10, 10, null, true));
         }
 
         [Theory]
