@@ -13,6 +13,27 @@
                 <input type="submit" value="zoek" class="btn btn-secondary" />
             </div>
         </form>
-        </div>
+        @if (Model.Count() == 0)
+        {
+            <p>Geen vergaderruimtes gevonden</p>
+        }
+        else
+        {
+            <div class="row">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-4">
+                        <p class="text-center"><strong>@item.Naam</strong></p>
+                        <p class="text-center small">Maximaal @item.MaximumAantalPersonen personen</p>
+                        <img src="~/images/@(item.VergaderruimteType.ToString()).jpg" alt="meetingroom" class="room" />
+                        <div class="text-center btn-reserveer pt-2 pb-5">
+                            <a class="btn btn-secondary" asp-controller="Reservatie" asp-action="Reserveer" asp-route-id="@item.Id">Reserveer</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
     </div>
+</div>
 

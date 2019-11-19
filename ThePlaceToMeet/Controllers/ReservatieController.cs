@@ -24,7 +24,13 @@ namespace ThePlaceToMeet.Controllers
         public IActionResult Index(int? aantalPersonen)
         {
             // implementeer
-            throw new NotImplementedException();
+            IEnumerable<Vergaderruimte> ruimtes;
+            if (aantalPersonen.HasValue)
+                ruimtes = _vergaderruimteRepository.GetByMaxAantalPersonen(aantalPersonen.Value);
+            else
+                ruimtes = _vergaderruimteRepository.GetAll();
+            ViewData["aantalPersonen"] = aantalPersonen;
+            return View(ruimtes.OrderBy(v => v.VergaderruimteType).ThenBy(v => v.MaximumAantalPersonen));
         }
 
         public IActionResult Reserveer(int id)
