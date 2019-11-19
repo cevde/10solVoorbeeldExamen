@@ -35,6 +35,9 @@ namespace ThePlaceToMeet {
             });
 
             services.AddScoped<IKlantRepository, KlantRepository>();
+            services.AddScoped<ICateringRepository, CateringRepository>();
+            services.AddScoped<IKortingRepository, KortingRepository>();
+            services.AddScoped<IVergaderruimteRepository, VergaderruimteRepository>();
             services.AddScoped<ApplicationDataInitializer>();
             services.AddScoped<KlantFilter>();
 
